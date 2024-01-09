@@ -14,7 +14,7 @@ function App() {
 
       {cards.map((el, index) => (
         <div
-          className={`bg-[#2e3856]  rounded-lg md:w-[70%] m-auto my-8 md:my-5 p-0 md:h-[70vh] h-[40vh] w-[95%] ${
+          className={`bg-[#2e3856]  rounded-lg md:w-[70%] m-auto my-8 md:my-5 p-0 md:h-[70vh] min-h-[40vh] w-[95%] ${
             currentCard.id === index ? "" : "hidden"
           }`}
           onClick={() =>
@@ -26,7 +26,7 @@ function App() {
               currentCard.id === index && !currentCard.expand ? "" : "hidden"
             }`}
           >
-            <img src={el.img} className="m-auto w-[100%]" />
+            <img src={el.img} alt={el.img} className="m-auto w-[100%]" />
           </div>
           <div
             className={`w-[100%] p-5 m-auto text-white font-bold  text-sm  md:text-xl md:text-center ${
