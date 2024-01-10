@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cards } from "./card";
 import ReactHtmlParser from "react-html-parser";
 import { FaArrowLeft, FaArrowRight, FaCheck, FaHome } from "react-icons/fa";
@@ -8,6 +8,22 @@ import video from "./assets/video.MP4";
 function App() {
   const [currentCard, setCurrentCard] = useState({ id: 0, expand: false });
 
+  useEffect(() => {
+    if (
+      localStorage.getItem("filtedCards") &&
+      localStorage.getItem("successCards")
+    ) {
+      console.log(JSON.parse(localStorage.getItem("successCards")));
+      setFiltedCards(JSON.parse(localStorage.getItem("filtedCards")));
+      setMainCards(JSON.parse(localStorage.getItem("filtedCards")));
+      setSuccessCards(JSON.parse(localStorage.getItem("successCards")));
+    }
+  }, []);
+
+  const updateLocalStorage = (successCards, filtedCards) => {
+    localStorage.setItem("successCards", JSON.stringify(successCards));
+    localStorage.setItem("filtedCards", JSON.stringify(filtedCards));
+  };
   const [filtedCards, setFiltedCards] = useState(cards);
   const [mainCards, setMainCards] = useState(cards);
   const [showReturnBtn, setShowReturnBtn] = useState(false);
@@ -53,7 +69,9 @@ function App() {
       {successCards.length === cards.length && !showReturnBtn && (
         <>
           <div className=" text-white m-auto text-center p-5">
-            <video className="m-auto my-5" src={video} />
+            <video controls autoPlay={true} className="m-auto my-5">
+              <source src={video} />
+            </video>
             <p className="text-2xl font-bold">
               Ты все сделааала!!! Ты моя умничка, очень сильно тебя люблю и
               горжусь тобой 😘❤️❤️
@@ -150,12 +168,13 @@ function App() {
             if (currentCard.id > filtedCards.length - 2) {
               setCurrentCard({ id: currentCard.id - 1, expand: false });
             }
-            setSuccessCards((prev) => [...prev, filtedCards[currentCard.id]]);
-            setFiltedCards((prev) => {
-              const newArr = prev.slice();
-              newArr.splice(currentCard.id, 1);
-              return newArr;
-            });
+            const newSuccess = [...successCards, filtedCards[currentCard.id]];
+            const newFilted = filtedCards.slice();
+            newFilted.splice(currentCard.id, 1);
+
+            setSuccessCards(newSuccess);
+            setFiltedCards(newFilted);
+            updateLocalStorage(newSuccess, newFilted);
           }}
         >
           <FaCheck className="text-white font-bold text-2xl" />
