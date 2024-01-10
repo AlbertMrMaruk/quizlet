@@ -22,14 +22,16 @@ function App() {
           }
         >
           <div
-            className={`w-[100%] p-2 m-auto ${
-              currentCard.id === index && !currentCard.expand ? "" : "hidden"
+            className={`w-[100%] h-[100%] p-2 ${
+              currentCard.id === index && !currentCard.expand
+                ? "md:flex"
+                : "hidden"
             }`}
           >
-            <img src={el.img} alt={el.img} className="m-auto w-[100%]" />
+            <img src={el.img} alt={el.img} className="m-auto md:m-0 w-[100%]" />
           </div>
           <div
-            className={`w-[100%] p-5 m-auto text-white font-bold  text-sm  md:text-xl md:text-center ${
+            className={`w-[100%] p-5 m-auto text-white font-bold  text-sm  md:text-3xl md:py-[4rem] md:px-[2rem] md:text-center h-[100%] ${
               currentCard.id === index && currentCard.expand ? "" : "hidden"
             }`}
           >
