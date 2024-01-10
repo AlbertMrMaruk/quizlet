@@ -3,10 +3,11 @@ import { cards } from "./card";
 import ReactHtmlParser from "react-html-parser";
 import { FaArrowLeft, FaArrowRight, FaCheck, FaHome } from "react-icons/fa";
 import { IoMdShuffle } from "react-icons/io";
-import video from "./assets/video.MP4";
+import video from "./assets/video.MOV";
 
 function App() {
   const [currentCard, setCurrentCard] = useState({ id: 0, expand: false });
+  const [text, setText] = useState("");
 
   useEffect(() => {
     if (
@@ -77,13 +78,38 @@ function App() {
       {successCards.length === cards.length && !showReturnBtn && (
         <>
           <div className=" text-white m-auto text-center p-5">
-            <video controls autoPlay={true} className="m-auto my-5">
-              <source src={video} />
-            </video>
-            <p className="text-2xl font-bold">
-              Ты все сделааала!!! Ты моя умничка, очень сильно тебя люблю и
-              горжусь тобой 😘❤️❤️
+            <p
+              className={`text-2xl font-bold pb-5 ${
+                text === "сирумем кез" && "hidden"
+              }`}
+            >
+              Все карточки изучены! Вы готовы к экзамену в РНИМУ 🤮
             </p>
+
+            <input
+              type="text"
+              className="w-[250px] py-2 px-3 text-black bg-white rounded-md"
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+            />
+            {text === "сирумем кез" && (
+              <>
+                <video
+                  controls
+                  autoPlay={true}
+                  className="m-auto my-5 md:w-[20%] w-[80%]"
+                >
+                  <source src={video} />
+                </video>
+                <p className="md:text-2xl text-md font-bold p-3">
+                  И я тебя очень сильно люблю любимая ❤️ <br></br>Очень сильно
+                  горжусь тобой и надеюсь ты также легко сдашь экзамен как
+                  закончила эти вопросы. <br /> Я в тебя верю и всегда буду
+                  поддерживать 😘❤️ <br />
+                  P.S. Это мы радуемся что ты изучила все карточки 😍❤️
+                </p>
+              </>
+            )}
           </div>
         </>
       )}
