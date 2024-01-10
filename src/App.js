@@ -14,7 +14,7 @@ function App() {
 
       {cards.map((el, index) => (
         <div
-          className={`bg-[#2e3856]  rounded-lg md:w-[70%] m-auto my-8 md:my-5 p-0 md:h-[70vh] min-h-[40vh] w-[95%] ${
+          className={`bg-[#2e3856]  rounded-lg md:w-[70%] m-auto my-8 md:my-5 p-0 md:h-[70vh] min-h-[36vh] w-[95%] ${
             currentCard.id === index ? "" : "hidden"
           }`}
           onClick={() =>
@@ -22,17 +22,19 @@ function App() {
           }
         >
           <div
-            className={`w-[100%] h-[100%] p-2 ${
+            className={`w-[100%] md:h-[100%] h-[36vh] p-2 ${
               currentCard.id === index && !currentCard.expand
-                ? "md:flex"
+                ? "flex"
                 : "hidden"
             }`}
           >
-            <img src={el.img} alt={el.img} className="m-auto md:m-0 w-[100%]" />
+            <img src={el.img} alt={el.img} className=" m-0 w-[100%]" />
           </div>
           <div
-            className={`w-[100%] p-5 m-auto text-white font-bold  text-sm  md:text-3xl md:py-[4rem] md:px-[2rem] md:text-center h-[100%] ${
-              currentCard.id === index && currentCard.expand ? "" : "hidden"
+            className={`w-[100%] p-5 m-auto text-white font-bold  text-sm  md:text-3xl md:py-[4rem] md:px-[2rem] md:text-center h-[36vh] md:h-[100%] ${
+              currentCard.id === index && currentCard.expand
+                ? "flex items-center"
+                : "hidden"
             }`}
           >
             {ReactHtmlParser(el.text)}
