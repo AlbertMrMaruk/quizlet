@@ -20,6 +20,14 @@ function App() {
     }
   }, []);
 
+  const clearHistory = () => {
+    setMainCards(cards);
+    setFiltedCards(cards);
+    setCurrentCard({ id: 0, expand: false });
+    setSuccessCards([]);
+    localStorage.removeItem("filtedCards");
+    localStorage.removeItem("successCards");
+  };
   const updateLocalStorage = (successCards, filtedCards) => {
     localStorage.setItem("successCards", JSON.stringify(successCards));
     localStorage.setItem("filtedCards", JSON.stringify(filtedCards));
@@ -50,7 +58,7 @@ function App() {
   };
 
   return (
-    <div className="w-full bg-[#0a092d] h-[100vh]">
+    <div className="w-full bg-[#0a092d] min-h-[100vh]">
       <h4 className="font-bold text-2xl text-white m-auto text-center pt-8">
         {currentCard.id + 1} / {filtedCards.length}
       </h4>
@@ -179,6 +187,13 @@ function App() {
         >
           <FaCheck className="text-white font-bold text-2xl" />
         </div>
+      </div>
+      <div
+        className="text-[#c3c3c3] font-bold mt-3 pb-4 cursor-pointer text-md text-center"
+        onClick={clearHistory}
+      >
+        {" "}
+        Очистить историю
       </div>
     </div>
   );
