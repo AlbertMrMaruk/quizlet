@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { cards } from "./card_text";
-import ReactHtmlParser from "react-html-parser";
+// import ReactHtmlParser from "react-html-parser";
 import { FaArrowLeft, FaArrowRight, FaCheck, FaHome } from "react-icons/fa";
 import { IoMdShuffle } from "react-icons/io";
 import video from "./assets/video.MOV";
