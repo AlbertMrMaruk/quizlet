@@ -15,3 +15,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+ol {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+
+li {
+  padding-left: 0.5rem;
+}

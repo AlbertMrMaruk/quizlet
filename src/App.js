@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { cards } from "./card";
+import { cards } from "./card_text";
 import ReactHtmlParser from "react-html-parser";
 import { FaArrowLeft, FaArrowRight, FaCheck, FaHome } from "react-icons/fa";
 import { IoMdShuffle } from "react-icons/io";
@@ -124,22 +124,30 @@ function App() {
           }
         >
           <div
-            className={`w-[100%] md:h-[100%] h-[44vh] p-2 ${
+            className={`w-[100%] md:h-[100%] h-[44vh] p-3  justify-center  items-center ${
               currentCard.id === index && !currentCard.expand
                 ? "flex"
                 : "hidden"
             }`}
           >
-            <img src={el.img} alt={el.img} className=" m-0 w-[100%]" />
+            <h1 className=" text-2xl text-white text-center font-bold">
+              {/* <img src={el.img} alt={el.img} className=" m-0 w-[100%]" /> */}
+              {el.header}
+            </h1>
           </div>
           <div
-            className={`w-[100%] p-5 m-auto text-white font-bold  text-sm  md:text-3xl md:py-[4rem] md:px-[2rem] md:text-center h-[44vh] md:h-[100%] ${
+            className={`w-[100%] p-5 m-auto text-white font-bold  text-xl  md:text-3xl md:py-[4rem] md:px-[2rem] md:text-center h-[44vh] md:h-[100%] ${
               currentCard.id === index && currentCard.expand
                 ? "flex items-center"
                 : "hidden"
             }`}
           >
-            {ReactHtmlParser(el.text)}
+            <ol>
+              {el.text.map((el, index) => (
+                <li key={index}>{el}</li>
+              ))}
+            </ol>
+            {/* {ReactHtmlParser(el.text)} */}
           </div>
         </div>
       ))}
