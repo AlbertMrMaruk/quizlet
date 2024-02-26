@@ -115,7 +115,7 @@ function App() {
       )}
       {filtedCards.map((el, index) => (
         <div
-          className={`bg-[#2e3856]  rounded-lg md:w-[70%] m-auto my-8 md:my-5 p-0 md:h-[70vh] min-h-[44vh] w-[95%] ${
+          className={`bg-[#2e3856]  rounded-lg md:w-[70%] m-auto my-8 md:my-5 p-0 md:h-[70vh] min-h-[50vh] w-[95%] ${
             currentCard.id === index ? "" : "hidden"
           }`}
           key={index}
@@ -124,7 +124,7 @@ function App() {
           }
         >
           <div
-            className={`w-[100%] md:h-[100%] h-[44vh] p-3  justify-center  items-center ${
+            className={`w-[100%] md:h-[100%] h-[50vh] p-3  justify-center  items-center ${
               currentCard.id === index && !currentCard.expand
                 ? "flex"
                 : "hidden"
@@ -136,7 +136,7 @@ function App() {
             </h1>
           </div>
           <div
-            className={`w-[100%] p-5 m-auto text-white font-bold  text-xl  md:text-3xl md:py-[4rem] md:px-[2rem] md:text-center h-[44vh] md:h-[100%] ${
+            className={`w-[100%] p-5 m-auto text-white font-bold  text-xl  md:text-3xl md:py-[4rem] md:px-[2rem] md:text-center h-[50vh] md:h-[100%] ${
               currentCard.id === index && currentCard.expand
                 ? "flex items-center"
                 : "hidden"
